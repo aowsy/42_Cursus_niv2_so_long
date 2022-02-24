@@ -22,9 +22,7 @@ let at least one cookie for Mooncake", map);
 	if (!(elem -> elem_p))
 		ft_map_error("where is Mooncake... \
 add a player's starting position to see him", map);
-	if (elem -> elem_e > 1)
-		ft_map_error("map must contain only one exit", map);
-	else
+	if (elem -> elem_p > 1)
 		ft_map_error("this is not a multiplayer game, \
 it must be only one player's starting position", map);
 }
