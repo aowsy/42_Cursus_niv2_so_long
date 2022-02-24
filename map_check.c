@@ -6,7 +6,7 @@
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:20:20 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/23 13:35:57 by mdelforg         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:16:10 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_map_check_mid_edges(char **map)
 	while (map[i])
 	{
 		if (map[i][0] != '1' || map[i][ft_strlen(map[i]) - 1] != '1')
-			ft_map_error("map needs to be enclosed by '1'", map);
+		{
+			ft_map_error("is the ship damaged, \
+map needs to be surrounded by walls", map);
+		}
 		i++;
 	}
 	return ;
@@ -34,14 +37,20 @@ void	ft_map_check_edges(char **map)
 	while (map[0][j])
 	{
 		if (map[0][j] != '1')
-			ft_map_error("map needs to be enclosed by '1'", map);
+		{
+			ft_map_error("is the ship damaged, \
+map needs to be surrounded by walls", map);
+		}
 		j++;
 	}
 	j = 0;
 	while (map[ft_map_size(map) - 1][j])
 	{
 		if (map[ft_map_size(map) - 1][j] != '1')
-			ft_map_error("map needs to be enclosed by '1'", map);
+		{
+			ft_map_error("is the ship damaged, \
+map needs to be surrounded by walls", map);
+		}
 		j++;
 	}
 	ft_map_check_mid_edges(map);
@@ -54,9 +63,11 @@ void	ft_map_check_size(char **map)
 	int	map_len;
 
 	if (!(ft_map_size(map) < 3 || !(ft_strlen(map[0]) < 3)))
-		ft_map_error("map size is too small", map);
+		ft_map_error("Mooncake has not enough room, \
+map size is too small", map);
 	if (ft_map_size(map) > 47 || ft_strlen(map[0]) > 90)
-		ft_map_error("map size too is large", map);
+		ft_map_error("I know Mooncake needs room, \
+but map size too is large", map);
 	map_len = ft_strlen(map[0]);
 	i = 1;
 	while (map[i])
@@ -80,7 +91,8 @@ void	ft_map_check_char(char **map)
 		while (map[i][j])
 		{
 			if (!ft_strchr(MAP_ARG, map[i][j]))
-				ft_map_error("map has wrong character", map);
+				ft_map_error("what did you mean, \
+map has wrong characters", map);
 			j++;
 		}
 		i++;

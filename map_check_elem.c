@@ -6,7 +6,7 @@
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 16:52:33 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/22 17:38:12 by mdelforg         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:04:37 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 void	ft_elem_error(char **map, t_elem *elem)
 {
 	if (!(elem -> elem_c))
-		ft_map_error("map must contain at least one collectible", map);
+		ft_map_error("why are you so mean, \
+let at least one cookie for Mooncake", map);
 	if (!(elem -> elem_e))
-		ft_map_error("map must contain an exit", map);
+		ft_map_error("Mooncake is trapped, add an exit to let him free", map);
 	if (!(elem -> elem_p))
-		ft_map_error("map must contain a player's starting position", map);
+		ft_map_error("where is Mooncake... \
+add a player's starting position to see him", map);
 	if (elem -> elem_e > 1)
 		ft_map_error("map must contain only one exit", map);
 	else
-		ft_map_error("map must contain only one player's starting position",
-			map);
+		ft_map_error("this is not a multiplayer game, \
+it must be only one player's starting position", map);
 }
 
 void	ft_check_elem(char c, t_elem *elem)
@@ -75,7 +77,8 @@ void	ft_check_exten(char *str)
 	int	len;
 
 	len = ft_strlen(str) - 1;
-	if (!(str[len] == 'r' && str[len - 1] == 'e' && str[len - 2] == 'b' && str[len - 3] == '.'))
+	if (!(str[len] == 'r' && str[len - 1] == 'e'
+			&& str[len - 2] == 'b' && str[len - 3] == '.'))
 		ft_error("the file must have the extension \".ber\"");
 	return ;
 }

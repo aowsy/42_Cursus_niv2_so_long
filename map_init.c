@@ -6,7 +6,7 @@
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:18:58 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/23 13:35:23 by mdelforg         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:10:13 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ char	**ft_str_in_tab(char *str, char **map)
 	return (new_map);
 }
 
+void	ft_after_map(int fd, char ***map)
+{
+	char	*str;
+
+	str = get_next_line(fd);
+	if (!str)
+		return ;
+	while (str)
+	{
+		*map = ft_str_in_tab(str, *map);
+		free(str);
+		str = get_next_line(fd);
+	}
+	free(str);
+	return ;
+}
+
 char	**ft_create_map(int fd)
 {
 	char	*str;
@@ -56,16 +73,17 @@ char	**ft_create_map(int fd)
 	if (!map)
 		ft_error("malloc error");
 	map[0] = NULL;
-	str = get_next_line(fd);
+	str = get_next_line_sl(fd);
 	if (!str)
-		ft_error_tab_str("empty file", NULL, map);
+		ft_error_tab_str("file is empty or starts with a \\n", NULL, map);
 	while (str)
 	{
 		map = ft_str_in_tab(str, map);
 		free(str);
-		str = get_next_line(fd);
+		str = get_next_line_sl(fd);
 	}
 	free(str);
+	ft_after_map(fd, &map);
 	return (map);
 }
 

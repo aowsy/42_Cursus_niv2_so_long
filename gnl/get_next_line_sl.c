@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_sl.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 17:08:16 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/23 15:06:38 by mdelforg         ###   ########.fr       */
+/*   Created: 2022/02/23 14:57:32 by mdelforg          #+#    #+#             */
+/*   Updated: 2022/02/23 15:05:49 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static char	*ft_get_rtn(size_t i, char *tmp_str)
 {
 	char	*rtn_line;
 
-	rtn_line = ft_substr_gnl(tmp_str, 0, i);
+	if (i > 0)
+		rtn_line = ft_substr_gnl(tmp_str, 0, i - 1);
+	else
+		rtn_line = ft_substr_gnl(tmp_str, 0, i);
 	if (!rtn_line)
 		return (NULL);
 	if (!*rtn_line)
@@ -75,7 +78,7 @@ static size_t	ft_get_i(char *str)
 	return (i);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line_sl(int fd)
 {
 	size_t		i;
 	char		*rtn_line;

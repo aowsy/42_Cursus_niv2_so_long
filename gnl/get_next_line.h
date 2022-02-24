@@ -6,7 +6,7 @@
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:16:10 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/21 18:50:57 by mdelforg         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:00:32 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define BUFFER_SIZE 1
 
 char	*get_next_line(int fd);
+char	*get_next_line_sl(int fd);
 char	*ft_strjoin_gnl(char const *s1, char const *s2, int i);
 size_t	ft_strlen_gnl(const char *s);
 char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);

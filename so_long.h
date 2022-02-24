@@ -6,7 +6,7 @@
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:29:23 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/23 13:51:03 by mdelforg         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:03:38 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,34 @@ typedef struct s_data
 	int		moves;
 }	t_data;
 
+//	map_init_check
 char	**ft_map_init(char *file);
 void	ft_map_check(char **map);
 int		ft_map_size(char **map);
+void	ft_map_check_elem(char **map);
+void	ft_check_exten(char *str); //check ".ber"
+
+//	scene_init
 void	ft_put_background(t_data *data, t_sprite *sprite);
 void	ft_put_sprites(t_data *data, t_sprite *sprite);
+
+//	movements
 void	ft_position(t_data *data);
 int		ft_keyhook(int keycode, t_data *data, t_sprite *sprite);
 void	ft_move_player(t_data *data, t_sprite *sprt, int x, int y);
-void	ft_map_check_elem(char **map);
-void	ft_check_exten(char *str);
-
 int		ft_close(t_data *data);
 
+//	error
 void	ft_error(char *msg);
 void	ft_error_tab_str(char *msg, char *str, char **map);
 void	ft_map_error(char *msg, char **map);
 void	ft_free_tab(char **tab, size_t i);
 
+//	gnl
 char	*get_next_line(int fd);
+char	*get_next_line_sl(int fd);
 
+//	libft
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 

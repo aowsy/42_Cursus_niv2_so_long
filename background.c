@@ -6,7 +6,7 @@
 /*   By: mdelforg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 10:19:17 by mdelforg          #+#    #+#             */
-/*   Updated: 2022/02/22 16:49:10 by mdelforg         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:41:02 by mdelforg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_put_sprites(t_data *data, t_sprite *sprite)
 					sprite->img = mlx_xpm_file_to_image(data->mlx, HERO,
 							&sprite->img_size, &sprite->img_size);
 				mlx_put_image_to_window(data->mlx, data->win, sprite->img,
-					data->x * 32, data->y * 32);
+					data->x * sprite->img_size, data->y * sprite->img_size);
 			}
 			data->x++;
 		}
@@ -43,6 +43,8 @@ void	ft_put_sprites(t_data *data, t_sprite *sprite)
 
 void	ft_put_background(t_data *data, t_sprite *sprite)
 {
+	data->moves = 0;
+	data->collect = 0;
 	data->y = 0;
 	while (data->y < data->map_size)
 	{
@@ -56,7 +58,7 @@ void	ft_put_background(t_data *data, t_sprite *sprite)
 				sprite->img = mlx_xpm_file_to_image(data->mlx, GROUND,
 						&sprite->img_size, &sprite->img_size);
 			mlx_put_image_to_window(data->mlx, data->win, sprite->img,
-				data->x * 32, data->y * 32);
+				data->x * sprite->img_size, data->y * sprite->img_size);
 			data->x++;
 		}
 		data->y++;
